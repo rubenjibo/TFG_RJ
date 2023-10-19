@@ -1,12 +1,17 @@
 package com.RubenJimenez.TFG.service;
 
 import com.RubenJimenez.TFG.models.Product;
+import com.RubenJimenez.TFG.config.*;
 import com.RubenJimenez.TFG.repo.ProductRepo;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService {
+
+    @Autowired
+    private RestHighLevelClient client;
     @Autowired
     private ProductRepo productRepo;
 
