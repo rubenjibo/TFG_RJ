@@ -14,11 +14,24 @@ public class Product {
     @Id
     private int id;
     private String name;
-
+    private String img;
     private String desc;
-
+    private String date;
+    private String[] category;
     private int price;
 
 
 
 }
+/*
+ {
+"id": 1,
+"name": "cadira",
+"img": "none",
+"desc": "desc",
+"date":"date",
+"category":["nadal","estiu"],
+"price": 10
+
+}
+ */

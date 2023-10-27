@@ -3,18 +3,32 @@ package com.RubenJimenez.TFG.controllers;
 import com.RubenJimenez.TFG.models.Product;
 import com.RubenJimenez.TFG.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
 
 @RestController
-@RequestMapping("/apis")
+@RequestMapping("/prod")
 public class productC {
 
     @Autowired
     private ProductService productService;
     @GetMapping("/findAll")
-    Iterable<Product> findAll(){
+    public Iterable<Product> findAll(){
         return productService.getProducts();
+    }
+
+    @PostMapping("/insert")
+    public Product insertProduct(@RequestBody Product prod){
+
+        return productService.insertProducts(prod);
+
+    }
+    @PostMapping("/delete")
+    public Optional<Product> deleteProduct(@RequestBody int id){
+
+        return productService.deleteProduct(id);
+
     }
 }

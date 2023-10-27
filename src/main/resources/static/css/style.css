@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#TablaProd {
+    border-collapse: collapse;
+    margin: auto;  /* Asegura que la tabla esté centrada dentro del contenedor 'main' */
+}
+
+#TablaProd th, #TablaProd td {
+    border: 1px solid #000;  /* Añade bordes a las celdas */
+    padding: 8px;  /* Añade algo de espacio alrededor del texto en las celdas */
+    text-align: left;  /* Alinea el texto a la izquierda */
+}
