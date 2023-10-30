@@ -1,0 +1,186 @@
+{
+  "id": 1,
+  "name": "Samarreta Blanca",
+  "img": "https://media.istockphoto.com/id/1079733230/es/foto/plantilla-de-estudio-de-la-ropa-con-camiseta-en-blanco-se-encuentra-en-el-fondo-en-gris.jpg?s=1024x1024&w=is&k=20&c=8c_76YiDg9WXIjqJaiANGmRSJ28cbsdBh0lk89sNMWM=",
+  "desc": "Samarreta blanca, maniga curta, estiu ideal.",
+  "date": "10-12-2018",
+  "category": ["Estiu", "Tardor", "Primavera"],
+  "price": 7.99
+}
+
+{
+  "id": 2,
+  "name": "Samarreta Negra",
+  "img": "https://media.istockphoto.com/id/483960103/es/foto/camiseta-negra-frontal-en-blanco-con-trazado-de-recorte.jpg?s=1024x1024&w=is&k=20&c=BDeqNBJiWYlMe6m9fnz9urD3IJBJKK9-DuFXK318eno=",
+  "desc": "Samarreta negra, estil casual, molt combinable.",
+  "date": "15-04-2019",
+  "category": ["Estiu", "Tardor", "Primavera"],
+  "price": 7.99
+}
+
+{
+  "id": 3,
+  "name": "Samarreta Blanca Llarga",
+  "img": "https://media.istockphoto.com/id/172414211/es/foto/manguito-largo-blanco-camiseta-blanca-en-t-aislado-en-blanco.jpg?s=1024x1024&w=is&k=20&c=t41y_cQAc1sYpUNHtf3w6JK3YgwZZCZ5YOxAorZw1pg=",
+  "desc": "Samarreta blanca, maniga llarga, hivern ideal.",
+  "date": "13-5-2017",
+  "category": ["Hivern", "Tardor", "Primavera"],
+  "price": 9.99
+}
+
+{
+  "id": 4,
+  "name": "Pantalons texans",
+  "img": "https://media.istockphoto.com/id/173239968/es/foto/fino-hermético-jeans-azul-sobre-fondo-blanco.jpg?s=1024x1024&w=is&k=20&c=IABliqXv1uDgC6XujdsI9EfBVGHrIe69OCsIj1BF-r0=",
+  "desc": "Pantalons texans blaus, estil casual clàssic.",
+  "date": "10-05-2020",
+  "category": ["Hivern", "Tardor", "Primavera"],
+  "price": 12.50
+}
+{
+    "id": 5,
+    "name": "Botines de Muntanya",
+    "img": "none",
+    "desc": "Botines robustos per a excursions en la muntanya",
+    "date": "25-08-2023",
+    "category": ["Esport", "Tardor", "Hivern"],
+    "price": 60.00
+},
+{
+    "id": 6,
+    "name": "Jaqueta de Cuir",
+    "img": "none",
+    "desc": "Jaqueta de cuir estil motero, amb múltiples butxaques",
+    "date": "16-10-2022",
+    "category": ["Tardor", "Hivern"],
+    "price": 80.00
+},
+{
+    "id": 7,
+    "name": "Samarreta Esportiva",
+    "img": "none",
+    "desc": "Samarreta transpirable per a activitats esportives",
+    "date": "03-07-2018",
+    "category": ["Esport", "Estiu"],
+    "price": 20.00
+},
+{
+    "id": 8,
+    "name": "Gorra de Llana",
+    "img": "none",
+    "desc": "Gorra de llana calenta per a l'hivern",
+    "date": "22-01-2019",
+    "category": ["Hivern"],
+    "price": 15.00
+},
+{
+    "id": 9,
+    "name": "Pantalons de Vestir",
+    "img": "none",
+    "desc": "Pantalons elegants per a ocasions formals",
+    "date": "14-03-2021",
+    "category": ["Tardor", "Hivern"],
+    "price": 40.00
+},
+{
+    "id": 10,
+    "name": "Vestit de Nit",
+    "img": "none",
+    "desc": "Vestit elegants per a sortides nocturnes",
+    "date": "18-06-2020",
+    "category": ["Primavera", "Estiu"],
+    "price": 50.00
+}
+
+
+{
+    "id": 11,
+    "name": "Jaqueta de Ploma",
+    "img": "none",
+    "desc": "Jaqueta amb reompliment de ploma, ideal per l'hivern",
+    "date": "15-11-2019",
+    "category": ["Hivern"],
+    "price": 55.00
+},
+{
+    "id": 12,
+    "name": "Sandalies Esportives",
+    "img": "none",
+    "desc": "Sandalies lleugeres i còmodes per a l'estiu",
+    "date": "30-06-2021",
+    "category": ["Estiu"],
+    "price": 25.00
+},
+{
+    "id": 13,
+    "name": "Gorra de Beisbol",
+    "img": "none",
+    "desc": "Gorra ajustable, ideal per protegir-se del sol",
+    "date": "22-07-2022",
+    "category": ["Estiu", "Primavera"],
+    "price": 12.00
+},
+{
+    "id": 14,
+    "name": "Pantalons Curts",
+    "img": "none",
+    "desc": "Pantalons curts de cotó, perfectes per a l'estiu",
+    "date": "14-05-2018",
+    "category": ["Estiu"],
+    "price": 20.00
+},
+{
+    "id": 15,
+    "name": "Bufanda de Llana",
+    "img": "none",
+    "desc": "Bufanda llarga i càlida per a l'hivern",
+    "date": "10-12-2020",
+    "category": ["Hivern"],
+    "price": 18.00
+},
+{
+    "id": 16,
+    "name": "Guants Tèrmics",
+    "img": "none",
+    "desc": "Guants tèrmics per mantenir les mans càlides",
+    "date": "25-11-2017",
+    "category": ["Hivern"],
+    "price": 15.00
+},
+{
+    "id": 17,
+    "name": "Vestit d'Estiu",
+    "img": "none",
+    "desc": "Vestit lleuger i fresc per a l'estiu",
+    "date": "17-06-2022",
+    "category": ["Estiu"],
+    "price": 30.00
+},
+{
+    "id": 18,
+    "name": "Sabates d'Esport",
+    "img": "none",
+    "desc": "Sabates per córrer amb sola flexible",
+    "date": "28-04-2021",
+    "category": ["Esport"],
+    "price": 45.00
+},
+{
+    "id": 19,
+    "name": "Mocador de Seda",
+    "img": "none",
+    "desc": "Mocador de seda amb estampats florals",
+    "date": "15-03-2019",
+    "category": ["Primavera", "Tardor"],
+    "price": 25.00
+},
+{
+    "id": 20,
+    "name": "Cinturó de Cuir",
+    "img": "none",
+    "desc": "Cinturó de cuir amb botó metàl·lic",
+    "date": "04-09-2023",
+    "category": ["Tardor", "Hivern"],
+    "price": 20.00
+}
+

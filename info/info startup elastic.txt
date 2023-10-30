@@ -1,0 +1,39 @@
+Ô£à Elasticsearch security features have been automatically configured!
+Ô£à Authentication is enabled and cluster connections are encrypted.
+
+Ôä╣´©Å  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  yZC-C0DhyklJoETf61+e
+
+Ôä╣´©Å  HTTP CA certificate SHA-256 fingerprint:
+  79584ddb3346e3e6ffc55c69e05cbf96e3d01b46b8f5aff325ce84427ed5a94f
+
+Ôä╣´©Å  Configure Kibana to use this cluster:
+ÔÇó Run Kibana and click the configuration link in the terminal when Kibana starts.
+ÔÇó Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjEwLjIiLCJhZHIiOlsiMTkyLjE2OC4xLjM5OjkyMDAiXSwiZmdyIjoiNzk1ODRkZGIzMzQ2ZTNlNmZmYzU1YzY5ZTA1Y2JmOTZlM2QwMWI0NmI4ZjVhZmYzMjVjZTg0NDI3ZWQ1YTk0ZiIsImtleSI6Ildma3E4WW9CSHZIOXZwNmFsNWhkOlJ2NEk0WHdaUnhhMnNCN1Jpb2I0N2cifQ==
+
+Ôä╣´©Å  Configure other nodes to join this cluster:
+ÔÇó On this node:
+  Ôüâ Create an enrollment token with `bin/elasticsearch-create-enrollment-token -s node`.
+  Ôüâ Uncomment the transport.host setting at the end of config/elasticsearch.yml.
+  Ôüâ Restart Elasticsearch.
+ÔÇó On other nodes:
+  Ôüâ Start Elasticsearch with `bin/elasticsearch --enrollment-token <token>`, using the enrollment token that you generated.
+
+{
+  "name" : "LAPTOP-P0BMR6GE",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "91QxpUjAQCavZ-3laQMf2Q",
+  "version" : {
+    "number" : "8.10.2",
+    "build_flavor" : "default",
+    "build_type" : "zip",
+    "build_hash" : "6d20dd8ce62365be9b1aca96427de4622e970e9e",
+    "build_date" : "2023-09-19T08:16:24.564900370Z",
+    "build_snapshot" : false,
+    "lucene_version" : "9.7.0",
+    "minimum_wire_compatibility_version" : "7.17.0",
+    "minimum_index_compatibility_version" : "7.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}

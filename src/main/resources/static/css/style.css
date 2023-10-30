@@ -24,3 +24,50 @@ main {
     padding: 8px;  /* Añade algo de espacio alrededor del texto en las celdas */
     text-align: left;  /* Alinea el texto a la izquierda */
 }
+
+ .product-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .product-img {
+    flex: 40%;
+  }
+
+  .product-details {
+    flex: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    flex: 25%;
+
+  }
+
+  .product-desc {
+    flex: 50%;
+
+  }
+
+  .product-footer {
+    flex: 25%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .product-category {
+    flex: 50%;
+
+  }
+
+  .product-price {
+    flex: 50%;
+    text-align: right;
+
+  }
+
+  img {
+    width: 100%;
+  }

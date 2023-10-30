@@ -6,7 +6,9 @@ import com.RubenJimenez.TFG.repo.ProductRepo;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -27,12 +29,16 @@ public class ProductService {
         return productRepo.save(prod);
     }
 
-    /*public Product updateProduct(Product prod,int id){
+    public Product updateProduct(Product prod) {
 
-        Product prod1 = productRepo.findById(id).get();
-        prod1.setPrice(prod.getPrice());
-        return prod1;
-    }*/
+        if(productRepo.existsById(prod.getId())) {
+            return productRepo.save(prod);
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Product not found"
+            );
+        }
+    }
 
     public Optional<Product> deleteProduct(int id) {
 

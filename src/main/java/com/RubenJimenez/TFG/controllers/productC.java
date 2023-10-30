@@ -31,4 +31,9 @@ public class productC {
         return productService.deleteProduct(id);
 
     }
+
+    @PutMapping("/update")
+    public Product updateProduct(@RequestBody Product prod) {
+        return productService.updateProduct(prod);
+    }
 }

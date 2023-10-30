@@ -1,0 +1,23 @@
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü
+Ô£à Elasticsearch security features have been automatically configured!
+Ô£à Authentication is enabled and cluster connections are encrypted.
+
+Ôä╣´©Å  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  +xmUCP+OmYK12=Q26*Zi
+
+Ôä╣´©Å  HTTP CA certificate SHA-256 fingerprint:
+  a82f513a14c74a11807b5860f901ee37c7b220000d20fdb382232aa689201d97
+
+Ôä╣´©Å  Configure Kibana to use this cluster:
+ÔÇó Run Kibana and click the configuration link in the terminal when Kibana starts.
+ÔÇó Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjcuMSIsImFkciI6WyIxOTIuMTY4LjEuMTQxOjkyMDAiXSwiZmdyIjoiYTgyZjUxM2ExNGM3NGExMTgwN2I1ODYwZjkwMWVlMzdjN2IyMjAwMDBkMjBmZGIzODIyMzJhYTY4OTIwMWQ5NyIsImtleSI6IjIya3NRNHNCUERyQVpXYkQtV01iOjhFS2Y1ZzA5U3FLUHRYSXM5d3RSUHcifQ==
+
+Ôä╣´©Å  Configure other nodes to join this cluster:
+ÔÇó On this node:
+  Ôüâ Create an enrollment token with `bin/elasticsearch-create-enrollment-token -s node`.
+  Ôüâ Uncomment the transport.host setting at the end of config/elasticsearch.yml.
+  Ôüâ Restart Elasticsearch.
+ÔÇó On other nodes:
+  Ôüâ Start Elasticsearch with `bin/elasticsearch --enrollment-token <token>`, using the enrollment token that you generated.
+ÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöüÔöü

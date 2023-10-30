@@ -18,7 +18,7 @@ public class Product {
     private String desc;
     private String date;
     private String[] category;
-    private int price;
+    private float price;
 
 
 
