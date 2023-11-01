@@ -1,7 +1,11 @@
-$(document).ready(function() {
+let products = [];
+let currentPage = 0;
+const itemsPerPage = 10;
 
-  loadProducts();
-  //$('#TablaProd').DataTable();
+$(document).ready(async function() {
+
+  await loadProducts();
+  renderTable();
 });
 
 async function loadProducts(){
@@ -14,37 +18,67 @@ async function loadProducts(){
         },
 
       });
-      const products = await request.json();
+      products = await request.json();
 
       console.log(products);
-      let finalHTML = "";
-      if (products.content && products.content.length > 0){
-        for (let product of products.content) {
-            let prodHTML = `
-              <tr>
-                <td>
-                  <div class="product-row">
-                    <div class="product-img">
-                      <img src="${product.img}" alt="${product.name}">
-                    </div>
-                    <div class="product-details">
-                      <div class="product-name">${product.name}</div>
-                      <div class="product-desc">${product.desc}</div>
-                      <div class="product-footer">
-                        <div class="product-category">${product.category.join(', ')}</div>
-                        <div class="product-price">${product.price.toFixed(2)}</div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            `;
-            finalHTML = finalHTML + prodHTML;
+
+}
+
+function renderTable(){
+
+          const tbody = document.querySelector('#TablaProd tbody');
+          if (!tbody) {
+               console.error('tbody no encontrado');
+               return;
           }
-      }
+
+          let finalHTML = "";
+          if (products.content && products.content.length > 0){
+             for (let i = currentPage * itemsPerPage; i < (currentPage + 1) * itemsPerPage && i < products.content.length; i++) {
+                const product = products.content[i];
+                console.log(product);
+                let prodHTML = `
+                  <tr>
+                    <td>
+                      <div class="product-row">
+                        <div class="product-img">
+                          <img src="${product.img}" alt="${product.name}">
+                        </div>
+                        <div class="product-details">
+                          <div class="product-name">${product.name}</div>
+                          <div class="product-desc">${product.desc}</div>
+                          <div class="product-footer">
+                            <div class="product-category">${product.category.join(', ')}</div>
+                            <div class="product-price">${product.price.toFixed(2)}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+                finalHTML = finalHTML + prodHTML;
+              }
+               tbody.outerHTML = finalHTML;
+              //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+          }
 
 
-        console.log(finalHTML);
+          //console.log(finalHTML);
 
-      document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+
+
+}
+
+function prevPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        renderTable();
+    }
+}
+
+function nextPage() {
+    if ((currentPage + 1) * itemsPerPage < products.content.length) {
+        currentPage++;
+        renderTable();
+    }
 }

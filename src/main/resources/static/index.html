@@ -8,31 +8,35 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 </head>
 <body>
 <header>
-
+    <div id="top-bar">
+        <input type="text" id="search-bar" placeholder="Buscar...">
+        <button id="session-button">Sesión</button>
+    </div>
 </header>
 
 <main>
 
+    <div id="table-container">
+        <table id="TablaProd">
+            <thead>
+            <tr>
+                <th>Products</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <table id="TablaProd">
-        <thead>
-        <tr>
-            <th>Products</th>
-
-
-        </tr>
-        </thead>
-
-        <tbody>
-
-
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
+    <div id="pagination">
+        <button onclick="prevPage()">Anterior</button>
+        <button onclick="nextPage()">Siguiente</button>
+    </div>
 
 </main>
 

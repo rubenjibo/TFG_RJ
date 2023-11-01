@@ -1,3 +1,35 @@
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#top-bar {
+    width: 100%;
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#search-bar {
+    width: 70%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#session-button {
+    background-color: #008CBA; /* Color azul para el botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -8,33 +40,49 @@ body {
 }
 
 main {
+    margin-top: 30px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;  /* Cambia flex a block */
 }
+
+#table-container {
+
+     margin: 0 auto;
+     width: 70%;
+     display: flex;
+     flex-direction: column;  /* Añade flex-direction */
+     align-items: center;
+}
+
 
 #TablaProd {
+    border-radius: 4px;
     border-collapse: collapse;
-    margin: auto;  /* Asegura que la tabla esté centrada dentro del contenedor 'main' */
+    margin: auto;
 }
 
-#TablaProd th, #TablaProd td {
-    border: 1px solid #000;  /* Añade bordes a las celdas */
-    padding: 8px;  /* Añade algo de espacio alrededor del texto en las celdas */
-    text-align: left;  /* Alinea el texto a la izquierda */
-}
+  #TablaProd th, #TablaProd td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
 
- .product-row {
+  .product-row {
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 300px;
   }
 
   .product-img {
     flex: 40%;
   }
 
+  .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+  }
   .product-details {
     flex: 60%;
     display: flex;
@@ -68,6 +116,11 @@ main {
 
   }
 
-  img {
-    width: 100%;
+  #pagination {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
   }
