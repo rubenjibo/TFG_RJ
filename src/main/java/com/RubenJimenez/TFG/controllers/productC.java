@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/prod")
+@RequestMapping("/product")
 public class productC {
 
     @Autowired

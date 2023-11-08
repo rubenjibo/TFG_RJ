@@ -10,7 +10,7 @@ $(document).ready(async function() {
 
 async function loadProducts(){
 
-      const request = await fetch('prod/findAll', {
+      const request = await fetch('product/findAll', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -33,9 +33,9 @@ function renderTable(){
           }
 
           let finalHTML = "";
-          if (products.content && products.content.length > 0){
-             for (let i = currentPage * itemsPerPage; i < (currentPage + 1) * itemsPerPage && i < products.content.length; i++) {
-                const product = products.content[i];
+          if (products.length > 0){
+             for (let i = currentPage * itemsPerPage; i < (currentPage + 1) * itemsPerPage && i < products.length; i++) {
+                const product = products[i];
                 console.log(product);
                 let prodHTML = `
                   <tr>
@@ -77,7 +77,7 @@ function prevPage() {
 }
 
 function nextPage() {
-    if ((currentPage + 1) * itemsPerPage < products.content.length) {
+    if ((currentPage + 1) * itemsPerPage < products.length) {
         currentPage++;
         renderTable();
     }

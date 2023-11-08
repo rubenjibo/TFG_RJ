@@ -3,92 +3,106 @@
   "name": "Samarreta Blanca",
   "img": "https://media.istockphoto.com/id/1079733230/es/foto/plantilla-de-estudio-de-la-ropa-con-camiseta-en-blanco-se-encuentra-en-el-fondo-en-gris.jpg?s=1024x1024&w=is&k=20&c=8c_76YiDg9WXIjqJaiANGmRSJ28cbsdBh0lk89sNMWM=",
   "desc": "Samarreta blanca, maniga curta, estiu ideal.",
-  "date": "10-12-2018",
+  "date": "2018-12-10",
   "category": ["Estiu", "Tardor", "Primavera"],
   "price": 7.99
 }
+
 
 {
   "id": 2,
   "name": "Samarreta Negra",
   "img": "https://media.istockphoto.com/id/483960103/es/foto/camiseta-negra-frontal-en-blanco-con-trazado-de-recorte.jpg?s=1024x1024&w=is&k=20&c=BDeqNBJiWYlMe6m9fnz9urD3IJBJKK9-DuFXK318eno=",
   "desc": "Samarreta negra, estil casual, molt combinable.",
-  "date": "15-04-2019",
+  "date": "2019-04-15",
   "category": ["Estiu", "Tardor", "Primavera"],
   "price": 7.99
 }
+
 
 {
   "id": 3,
   "name": "Samarreta Blanca Llarga",
   "img": "https://media.istockphoto.com/id/172414211/es/foto/manguito-largo-blanco-camiseta-blanca-en-t-aislado-en-blanco.jpg?s=1024x1024&w=is&k=20&c=t41y_cQAc1sYpUNHtf3w6JK3YgwZZCZ5YOxAorZw1pg=",
   "desc": "Samarreta blanca, maniga llarga, hivern ideal.",
-  "date": "13-5-2017",
+  "date": "2017-05-13",
   "category": ["Hivern", "Tardor", "Primavera"],
   "price": 9.99
 }
+
 
 {
   "id": 4,
   "name": "Pantalons texans",
   "img": "https://media.istockphoto.com/id/173239968/es/foto/fino-hermético-jeans-azul-sobre-fondo-blanco.jpg?s=1024x1024&w=is&k=20&c=IABliqXv1uDgC6XujdsI9EfBVGHrIe69OCsIj1BF-r0=",
   "desc": "Pantalons texans blaus, estil casual clàssic.",
-  "date": "10-05-2020",
+  "date": "2020-05-10",
   "category": ["Hivern", "Tardor", "Primavera"],
   "price": 24.50
 }
+
+
 {
     "id": 5,
     "name": "Botins de Muntanya",
     "img": "https://media.istockphoto.com/id/1264255958/es/foto/botas.jpg?s=2048x2048&w=is&k=20&c=Bw784myg_FSeuujvlLOsCUYrhUP50qMp6PkJjNA-hyg=",
     "desc": "Botins robustos per a excursions a la muntanya",
-    "date": "25-08-2023",
+    "date": "2023-08-25",
     "category": ["Esport", "Tardor", "Hivern"],
     "price": 59.99
-},
+}
+
+
 {
     "id": 6,
     "name": "Jaqueta de Cuir",
     "img": "https://media.istockphoto.com/id/468491142/es/foto/vintage-cuero-chaqueta-de-motorista-aislado-en-blanco.jpg?s=2048x2048&w=is&k=20&c=VtB8yBDTlnEYKCYI1ZWYe0B4iL00XkZYYOj1XFA6sfY=",
     "desc": "Jaqueta de cuir estil motero, amb múltiples butxaques",
-    "date": "16-10-2022",
+    "date":"2022-10-16",
     "category": ["Tardor", "Hivern"],
     "price": 79.99
-},
+}
+
+
 {
     "id": 7,
     "name": "Samarreta Esportiva Tirants",
     "img": "https://media.istockphoto.com/id/177701885/es/foto/transpirable-de-poliéster-tejido-de-camiseta-deportes-sin-mangas.jpg?s=2048x2048&w=is&k=20&c=vnJvPvVIJHNz5Lw_8UAp3J036gLOrQdswTS-tyXor6U=",
     "desc": "Samarreta transpirable de tirants per a activitats esportives",
-    "date": "03-07-2018",
+    "date": "2018-07-03",
     "category": ["Esport", "Estiu"],
     "price": 14.99
-},
+}
+
+
 {
     "id": 8,
     "name": "Gorro de Llana",
     "img": "https://media.istockphoto.com/id/1263030340/es/foto/gorra-de-punto-amarillo-aislada-en-blanco.jpg?s=2048x2048&w=is&k=20&c=pm3TLHet9etnXHgmftCJlbU570eRe7RTihaurMUC9UU=",
     "desc": "Gorro de llana calenta per a l'hivern",
-    "date": "22-01-2019",
+    "date": "2019-01-22",
     "category": ["Hivern"],
     "price": 9.99
-},
+}
+
 
 {
     "id": 9,
     "name": "Pantalons de Vestir",
     "img": "https://media.istockphoto.com/id/115885850/es/foto/negro-y-negro-se-permite-zapatos.jpg?s=2048x2048&w=is&k=20&c=-7DhlYXJlFOc1_IU8WFmW62LGD8pHV24AuKD2_9q6bs=",
     "desc": "Pantalons elegants per a ocasions formals",
-    "date": "14-03-2021",
+    "date": "2021-03-14",
     "category": ["Tardor", "Hivern"],
     "price": 39.99
-},
+}
+
+
 {
     "id": 10,
     "name": "Vestit de Nit",
     "img": "https://media.istockphoto.com/id/961849932/es/foto/negro-vestido-de-percha-aislada-sobre-fondo-blanco.jpg?s=2048x2048&w=is&k=20&c=EVMdXBc0_1xXdvAzsGX0TIkgGmaVyvezMHVRLA2raQQ=",
     "desc": "Vestit elegant per a sortides nocturnes",
-    "date": "18-06-2020",
+    "date": "2020-06-18",
     "category": ["Primavera", "Estiu"],
     "price": 49.99
 }
@@ -99,88 +113,107 @@
     "name": "Jaqueta de Ploma",
     "img": "https://media.istockphoto.com/id/886508286/es/foto/chaqueta-de-pluma.jpg?s=2048x2048&w=is&k=20&c=9NOj2BLoWPjdOevwC7FSmqqw28TrmtESFt1X4idE-w0=",
     "desc": "Jaqueta amb reompliment de ploma per no passar fred a l'hivern",
-    "date": "15-11-2019",
+    "date": "2019-11-15",
     "category": ["Hivern"],
     "price": 54.99
-},
+}
+
+
+
 {
     "id": 12,
     "name": "Sandalies Esportives",
     "img": "https://media.istockphoto.com/id/479297758/es/foto/flip-flops-aislado-azul.jpg?s=2048x2048&w=is&k=20&c=Iupy7cQ0RPXEoFAJlfV4_o8as5c6hjuwqcX_Za672ig=",
     "desc": "Sandalies lleugeres i còmodes per a l'estiu",
-    "date": "30-06-2021",
+    "date": "2021-06-30",
     "category": ["Estiu"],
     "price": 6.99
-},
+}
+
+
 {
     "id": 13,
     "name": "Gorra de Beisbol",
     "img": "https://media.istockphoto.com/id/177016269/es/foto/rojo-de-gorra-de-béisbol.jpg?s=2048x2048&w=is&k=20&c=wM34GzV7Tgxd_SRqGKbG2E2IoMFWYODUTbugwaZOmls=",
     "desc": "Gorra ajustable, ideal per protegir-se del sol",
-    "date": "22-07-2022",
+    "date": "2022-07-22",
     "category": ["Tardor", "Hivern", "Primavera", "Estiu"],
     "price": 11.99
-},
+}
+
+
 {
     "id": 14,
     "name": "Pantalons Curts",
     "img": "https://media.istockphoto.com/id/510333639/es/foto/pantalón-corto-de-hombres.jpg?s=2048x2048&w=is&k=20&c=N097hN5rkYVkPG8p67lXD9fdTDuTVe9ZM7kwCafGyPc=",
     "desc": "Pantalons curts de cotó, perfectes per a l'estiu",
-    "date": "14-05-2018",
+    "date": "2018-05-14",
     "category": ["Estiu"],
     "price": 19.99
-},
+}
+
+
 {
     "id": 15,
     "name": "Bufanda de Llana",
     "img": "https://media.istockphoto.com/id/187670186/es/foto/pañuelo-azul-de-invierno.jpg?s=2048x2048&w=is&k=20&c=wFQizaPh-u3XjCRAxHRBdFmpnMgBqnLZpdPUZwUjgVg=",
     "desc": "Bufanda llarga i càlida per a l'hivern",
-    "date": "10-12-2020",
+    "date": "2020-12-10",
     "category": ["Hivern"],
     "price": 6.99
-},
+}
+
+
 {
     "id": 16,
     "name": "Guants Tèrmics",
     "img": "https://media.istockphoto.com/id/1273525273/es/foto/guantes-de-soldadura.jpg?s=2048x2048&w=is&k=20&c=zW4WZ03vbQGWFQb1L3DspPlaj56u7Iblj8jgAp2Q8oE=",
     "desc": "Guants tèrmics per mantenir les mans càlides",
-    "date": "25-11-2017",
+    "date": "2017-11-25",
     "category": ["Hivern"],
     "price": 14.99
-},
+}
+
+
 {
     "id": 17,
     "name": "Vestit d'Estiu",
     "img": "https://media.istockphoto.com/id/178851955/es/foto/flowery-evase-bateau-vestido-amarillo.jpg?s=2048x2048&w=is&k=20&c=SIdOfjw6tkYOVRT68-xHpFkAtnK_7Ux88mG3W-oexQs=",
     "desc": "Vestit lleuger i fresc per a l'estiu",
-    "date": "17-06-2022",
+    "date": "2022-06-17",
     "category": ["Estiu"],
     "price": 29.99
-},
+}
+
+
 {
     "id": 18,
     "name": "Sabates d'Esport",
     "img": "https://media.istockphoto.com/id/623270836/es/foto/zapatos-deportivos-modernos.jpg?s=2048x2048&w=is&k=20&c=evrvGv-NVtEF5HCvtW63U0WkG-lVhViQVSvUYkHm3H0=",
     "desc": "Sabates per córrer amb sola flexible",
-    "date": "28-04-2021",
+    "date": "2021-04-28",
     "category": ["Esport", "Tardor", "Hivern", "Primavera", "Estiu"],
     "price": 44.99
-},
+}
+
+
 {
     "id": 19,
     "name": "Mocador de Seda",
     "img": "https://media.istockphoto.com/id/501284738/es/foto/bufanda.jpg?s=2048x2048&w=is&k=20&c=YSuRYB_nOsRYBiA08xJ5gcQFspuY6DIgaB6lO5c5NP8=",
     "desc": "Mocador de seda amb estampats florals",
-    "date": "15-03-2019",
+    "date": "2019-03-15",
     "category": ["Primavera", "Tardor"],
     "price": 9.99
-},
+}
+
+
 {
     "id": 20,
     "name": "Cinturó de Cuir",
     "img": "https://media.istockphoto.com/id/954912784/es/foto/objeto-en-el-fondo.jpg?s=2048x2048&w=is&k=20&c=SD-tUYiLQZLbFwhnZ_m6FCEE-PmIDqxNDloBAdn5kOg=",
     "desc": "Cinturó de cuir amb botó metàl·lic",
-    "date": "04-09-2023",
+    "date": "2023-09-04",
     "category": ["Tardor", "Hivern", "Primavera", "Estiu"],
     "price": 14.99
 }

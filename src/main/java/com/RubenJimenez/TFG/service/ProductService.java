@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.springframework.data.domain.Sort;
 import java.util.Optional;
 
 @Service
@@ -20,8 +20,8 @@ public class ProductService {
     private ProductRepo productRepo;
 
     public Iterable<Product> getProducts(){
-
-        return productRepo.findAll();
+        Sort sort = Sort.by(Sort.Direction.DESC, "date");
+        return productRepo.findAll(sort);
     }
 
     public Product insertProducts(Product prod){
