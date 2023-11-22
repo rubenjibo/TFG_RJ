@@ -1,15 +1,30 @@
 {
-    "query":{
-        "match": {            
-            "name":"cadira"
-        }
+    "query" :{
+        "bool":{
+            "must" : {
+                "terms": {
+                "category.keyword": ["Estiu"]
+                }
+            },
+            "should" : [
+                { "match": {"name": "blanca"}},
+                { "match": {"desc": "blanca"}}
+                 
+            ],
+            "minimum_should_match" : 1          
+        }       
     }
+
 }
----------------------------------------
+
+
 {
-    "query":{
-        "wildcard": {            
-            "name":"c*"
-        }
+        "bool":{
+            "must" : {
+                "terms": {
+                "category.keyword": ["Estiu"]
+                }
+            }
+                     
+        }       
     }
-}

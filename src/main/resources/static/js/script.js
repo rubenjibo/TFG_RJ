@@ -6,6 +6,19 @@ $(document).ready(async function() {
 
   await loadProducts();
   renderTable();
+
+
+
+   $('#search-bar').on('keypress', function(e) {
+          if (e.key === 'Enter') {
+              filterProducts(); // Pasa el valor actual del input a updateBar
+          }
+   });
+
+   $('#search-button').on('click', function() {
+           filterProducts();
+   });
+
 });
 
 async function loadProducts(){
@@ -82,3 +95,38 @@ function nextPage() {
         renderTable();
     }
 }
+
+async function filterProducts(){
+
+    var searchText = $('#search-bar').val();
+
+    var selectedCategories = [];
+    $('#category-menu input:checked').each(function() {
+        selectedCategories.push($(this).val());
+    });
+
+
+
+    if(searchText!='' || selectedCategories != []){
+        const request = await fetch(`product/filterProducts?searchText=${encodeURIComponent(searchText)}&categories=${encodeURIComponent(selectedCategories)}`, {
+                method: 'GET',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+
+              });
+
+
+        products = await request.json();
+
+        console.log(products);
+        renderTable();
+    }else{
+        loadProducts()
+        renderTable();
+    }
+
+
+}
+

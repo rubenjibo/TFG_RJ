@@ -124,3 +124,9 @@ main {
       display: flex;
       justify-content: center;
   }
+
+  #category-menu {
+
+      padding: 10px;
+
+  }

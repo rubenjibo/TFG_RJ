@@ -5,6 +5,7 @@ import com.RubenJimenez.TFG.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -17,6 +18,11 @@ public class productC {
     @GetMapping("/findAll")
     public Iterable<Product> findAll(){
         return productService.getProducts();
+    }
+
+    @GetMapping("/filterProducts")
+    public Iterable<Product> filterProducts(@RequestParam String searchText, String[] categories){
+        return productService.filterProducts(searchText,categories);
     }
 
     @PostMapping("/insert")
