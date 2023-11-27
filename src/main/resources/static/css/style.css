@@ -130,3 +130,41 @@ main {
       padding: 10px;
 
   }
+
+  /* Estilo del fondo oscurecido */
+  .modal {
+      display: none; /* Oculto por defecto */
+      position: fixed; /* Fijo en la posición */
+      z-index: 1; /* Situado sobre el resto del contenido */
+      left: 0;
+      top: 0;
+      width: 100%; /* Anchura completa */
+      height: 100%; /* Altura completa */
+      overflow: auto; /* Habilitar scroll si es necesario */
+      background-color: rgb(0,0,0); /* Color de fondo */
+      background-color: rgba(0,0,0,0.4); /* Negro con opacidad */
+  }
+
+  /* Estilo del contenido del modal */
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% desde arriba y centrado */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40%; /* Anchura del contenido */
+  }
+
+  /* El botón de cierre (x) */
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }

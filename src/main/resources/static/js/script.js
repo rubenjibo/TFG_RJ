@@ -19,6 +19,20 @@ $(document).ready(async function() {
            filterProducts();
    });
 
+   $("#session-button").on("click", function() {
+           $("#loginModal").show();
+   });
+
+   $(".close").on("click", function() {
+           $("#loginModal").hide();
+   });
+
+     $(window).on("click", function(event) {
+           if ($(event.target).is("#loginModal")) {
+               $("#loginModal").hide();
+           }
+       });
+
 });
 
 async function loadProducts(){

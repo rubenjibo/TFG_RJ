@@ -5,18 +5,18 @@ import com.RubenJimenez.TFG.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/product")
-public class productC {
+public class ProductController {
 
     @Autowired
     private ProductService productService;
     @GetMapping("/findAll")
     public Iterable<Product> findAll(){
+
         return productService.getProducts();
     }
 

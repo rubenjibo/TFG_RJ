@@ -27,17 +27,10 @@ public class Product {
     private String desc;
 
 
-
-
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd")
-
-    //@JsonDeserialize(using = CustomDateDeserializer.class)
     @Field(type = FieldType.Date, format = DateFormat.date)
     private String date;
 
-    /*@Field(type = FieldType.Date, store = true, format = DateFormat.year_month_day)
-    @JsonFormat (shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd")
-    private Date date;*/
+
 
     private String[] category;
     private float price;
