@@ -15,6 +15,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Document(indexName = "event")
 public class Event {
 
+    @Id
+    private String id;
+
     private String categoria;
 
     @Field(type = FieldType.Date, format = DateFormat.date)
