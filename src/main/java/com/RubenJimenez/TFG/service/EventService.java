@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -24,6 +25,11 @@ public class EventService {
     public Event insertEvents(Event event){
 
         return eventRepo.save(event);
+    }
+
+    public void deleteEvent(Event event) {
+
+        eventRepo.delete(event);
     }
 
     public Iterable<Product> sortProductsOnEvents(Iterable<Product> prods){

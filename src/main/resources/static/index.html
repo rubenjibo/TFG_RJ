@@ -41,17 +41,102 @@
             </form>
         </div>
     </div>
-    <div id="table-container">
-        <table id="TablaProd">
-            <thead>
-            <tr>
-                <th>Products</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div class="main-container">
+        <div id="table-container">
+            <table id="TablaProd">
+                <thead>
+                <tr>
+                    <th>Products</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-containers-column">
+            <div class="form-containers">
+                <div class="form-container">
+
+
+                    <label for="day_ini">Día inici</label>
+                    <input type="number" id="day_ini" name="day_ini">
+
+                    <label for="month_ini">Mes inici</label>
+                    <select id="month_ini" name="month_ini">
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+
+                    <label for="year_ini">Añy inici</label>
+                    <input type="number" id="year_ini" name="year_ini">
+
+
+                    <select id="categoriy-event" name="categoriy-event">
+                        <option value="Estiu">Estiu</option>
+                        <option value="Hivern">Hivern</option>
+                        <option value="Primavera">Primavera</option>
+                        <option value="Tardor">Tardor</option>
+                        <option value="Esport">Esport</option>
+
+                    </select>
+                </div>
+                <div class="form-container">
+
+
+                    <label for="day_fi">Día fi</label>
+                    <input type="number" id="day_fi" name="day_fi">
+
+
+                    <label for="month_fi">Mes fi</label>
+                    <select id="month_fi" name="month_fi">
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+
+                    <label for="year_fi">Añy fi</label>
+                    <input type="number" id="year_fi" name="year_fi">
+
+
+                    <button type="submit" id="send-event">Enviar</button>
+
+                </div>
+            </div>
+            <div class="event-table-container">
+                <table id="TablaEvent">
+                    <thead>
+                    <tr>
+                        <th>Events</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
     <div id="pagination">
         <button onclick="prevPage()">Anterior</button>
