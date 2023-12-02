@@ -53,7 +53,7 @@ async function loadProducts(){
       });
       products = await request.json();
 
-      console.log(products);
+      console.log("load products");
 
 }
 
@@ -69,9 +69,10 @@ async function loadEvents(){
       });
       response = await request.json();
       events = response.content;
-      console.log(events);
+      console.log("load events");
 
 }
+
 function renderTableEvents(){
     const tbodyE = document.querySelector('#TablaEvent tbody');
     if (!tbodyE) {
@@ -80,11 +81,11 @@ function renderTableEvents(){
     }
       let finalHTML = "";
       console.log(events)
-      console.log(events.length)
+
       if (events.length > 0){
          for (let y =0; y <  events.length; y++) {
             const event = events[y];
-            console.log(event);
+
             let eventHTML = `
               <tr>
                 <td>
@@ -92,16 +93,18 @@ function renderTableEvents(){
                      <div class="event-dataini">${event.date_ini}</div>
                      <div class="event-datafi">${event.date_fi}</div>
                      <div class="event-category">${event.categoria}</div>
-                     <div><button> X </button></div>
+                     <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
                   </div>
                 </td>
               </tr>
             `;
             finalHTML = finalHTML + eventHTML;
           }
-          console.log(finalHTML);
+
            tbodyE.outerHTML = finalHTML;
           //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+      }else{
+        tbodyE.outerHTML = finalHTML;
       }
 }
 
@@ -117,7 +120,7 @@ function renderTable(){
           if (products.length > 0){
              for (let i = currentPage * itemsPerPage; i < (currentPage + 1) * itemsPerPage && i < products.length; i++) {
                 const product = products[i];
-                console.log(product);
+
                 let prodHTML = `
                   <tr>
                     <td>
@@ -150,6 +153,25 @@ function renderTable(){
 
 }
 
+async function deleteEvent(id){
+    var event = events[id];
+
+    const response = await fetch('/event/delete', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(event)
+    });
+
+    await loadProducts();
+    await loadEvents();
+    renderTable();
+    renderTableEvents();
+
+}
+
 function prevPage() {
     if (currentPage > 0) {
         currentPage--;
@@ -168,12 +190,15 @@ async function filterProducts(){
 
     var searchText = $('#search-bar').val();
 
+
+
+
+    var categ = $('#categoriy-search').val();
     var selectedCategories = [];
-    $('#category-menu input:checked').each(function() {
-        selectedCategories.push($(this).val());
-    });
-
-
+    if(categ != "None"){
+        selectedCategories.push(categ);
+    }
+    console.log(categ);
 
     if(searchText!='' || selectedCategories != []){
         const request = await fetch(`product/filterProducts?searchText=${encodeURIComponent(searchText)}&categories=${encodeURIComponent(selectedCategories)}`, {
@@ -266,6 +291,7 @@ async function sendEvent(){
 
     if(valid){
 
+
         var data_ini = String(year_ini) +"-"+ String(month_ini) +"-"+ String(day_ini);
         var data_fi = String(year_fi) +"-"+ String(month_fi) +"-"+ String(day_fi);
         var categoriaEvent = $('#categoriy-event').val();
@@ -288,8 +314,22 @@ async function sendEvent(){
 
     }
 
+    await loadEvents();
+    await loadProducts();
+
+    await sleep(500);
+
+    renderTable();
+    renderTableEvents();
 
 
 
+
+
+
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 

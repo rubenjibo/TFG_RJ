@@ -15,14 +15,18 @@
 <header>
     <div id="top-bar">
         <input type="text" id="search-bar" placeholder="Buscar...">
-
         <div id="category-menu">
-            <div><input type="checkbox" id="Estiu" value="Estiu"><label for="Estiu">Estiu</label></div>
-            <div><input type="checkbox" id="Hivern" value="Hivern"><label for="Hivern">Hivern</label></div>
-            <div><input type="checkbox" id="Tardor" value="Tardor"><label for="Tardor">Tardor</label></div>
-            <div><input type="checkbox" id="Primavera" value="Primavera"><label for="Primavera">Primavera</label></div>
-            <div><input type="checkbox" id="Esport" value="Esport"><label for="Esport">Esport</label></div>
+            <select id="categoriy-search" name="categoriy-search">
+                <option id="None" value="None">Cap categoria</option>
+                <option id="Estiu" value="Estiu">Estiu</option>
+                <option id="Hivern"  value="Hivern">Hivern</option>
+                <option id="Primavera" value="Primavera">Primavera</option>
+                <option id="Tardor" value="Tardor">Tardor</option>
+                <option id="Esport" value="Esport">Esport</option>
+
+            </select>
         </div>
+
         <button id="search-button">Buscar</button>
         <button id="session-button">Admin</button>
     </div>
