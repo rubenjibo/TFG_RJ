@@ -75,14 +75,16 @@ async function loadEvents(){
 
 function renderTableEvents(){
     const tbodyE = document.querySelector('#TablaEvent tbody');
+
     if (!tbodyE) {
        console.error('tbodyE no encontrado');
        return;
     }
-      let finalHTML = "";
-      console.log(events)
 
-      if (events.length > 0){
+    let finalHTML = "";
+    console.log(events)
+
+        if (events.length > 0){
          for (let y =0; y <  events.length; y++) {
             const event = events[y];
 
@@ -99,14 +101,15 @@ function renderTableEvents(){
               </tr>
             `;
             finalHTML = finalHTML + eventHTML;
-          }
+         }
 
-           tbodyE.outerHTML = finalHTML;
-          //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
-      }else{
-        tbodyE.outerHTML = finalHTML;
-      }
-}
+         tbodyE.innerHTML = finalHTML;
+         //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+        }else{
+        tbodyE.innerHTML = finalHTML;
+        }
+
+    }
 
 function renderTable(){
 
@@ -142,8 +145,10 @@ function renderTable(){
                 `;
                 finalHTML = finalHTML + prodHTML;
               }
-               tbody.outerHTML = finalHTML;
+               tbody.innerHTML = finalHTML;
               //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+          }else{
+            tbodyE.innerHTML = finalHTML;
           }
 
 
@@ -167,6 +172,7 @@ async function deleteEvent(id){
 
     await loadProducts();
     await loadEvents();
+    await sleep(500);
     renderTable();
     renderTableEvents();
 
