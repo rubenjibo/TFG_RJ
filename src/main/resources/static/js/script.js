@@ -1,5 +1,6 @@
 let products = [];
 let events = [];
+let prios = []
 let currentPage = 0;
 const itemsPerPage = 10;
 
@@ -7,9 +8,12 @@ $(document).ready(async function() {
 
   await loadProducts();
   await loadEvents();
+  await loadPrios();
+
   renderTable();
   renderTableEvents();
-
+  renderTablePrios();
+  loadSelectPrios()
 
    $('#search-bar').on('keypress', function(e) {
           if (e.key === 'Enter') {
@@ -23,6 +27,10 @@ $(document).ready(async function() {
 
    $('#send-event').on('click', function() {
               sendEvent();
+   });
+
+   $('#send-prio').on('click', function() {
+              sendPrio();
    });
 
    $("#session-button").on("click", function() {
@@ -54,6 +62,7 @@ async function loadProducts(){
       products = await request.json();
 
       console.log("load products");
+      console.log(products);
 
 }
 
@@ -73,6 +82,67 @@ async function loadEvents(){
 
 }
 
+async function loadPrios(){
+
+      const request = await fetch('prio/findAll', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+
+      });
+      response = await request.json();
+      prios = response.content;
+      console.log("load prios");
+
+}
+
+function renderTablePrios(){
+    const tbodyE = document.querySelector('#TablaPrio tbody');
+
+    if (!tbodyE) {
+       console.error('tbodyE no encontrado');
+       return;
+    }
+
+    let finalHTML = "";
+
+
+    if (prios.length > 0){
+     for (let y =0; y <  prios.length; y++) {
+        const prio = prios[y];
+
+        let prioHTML = `
+          <tr>
+            <td>
+              <div class="prio-row">
+                 <div class="prio-row-dates">
+                    <div class="prio-dataini">${prio.date_ini}  </div>
+                    <div class="prio-dataini">${prio.date_fi}</div>
+                    <div><button data-id="${y}" onclick="deletePrio(${y})"> X </button></div>
+                 </div>
+
+                 <div class="prio-row-numbers">
+                     <div class="prio-product">ID: ${prio.product}  </div>
+                     <div class="prio-position">Index: ${prio.position}</div>
+                 </div>
+
+              </div>
+            </td>
+          </tr>
+        `;
+        finalHTML = finalHTML + prioHTML;
+     }
+
+     tbodyE.innerHTML = finalHTML;
+     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+    }else{
+    tbodyE.innerHTML = finalHTML;
+    }
+
+}
+
 function renderTableEvents(){
     const tbodyE = document.querySelector('#TablaEvent tbody');
 
@@ -84,32 +154,32 @@ function renderTableEvents(){
     let finalHTML = "";
     console.log(events)
 
-        if (events.length > 0){
-         for (let y =0; y <  events.length; y++) {
-            const event = events[y];
+    if (events.length > 0){
+     for (let y =0; y <  events.length; y++) {
+        const event = events[y];
 
-            let eventHTML = `
-              <tr>
-                <td>
-                  <div class="event-row">
-                     <div class="event-dataini">${event.date_ini}</div>
-                     <div class="event-datafi">${event.date_fi}</div>
-                     <div class="event-category">${event.categoria}</div>
-                     <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
-                  </div>
-                </td>
-              </tr>
-            `;
-            finalHTML = finalHTML + eventHTML;
-         }
+        let eventHTML = `
+          <tr>
+            <td>
+              <div class="event-row">
+                 <div class="event-dataini">${event.date_ini}</div>
+                 <div class="event-datafi">${event.date_fi}</div>
+                 <div class="event-category">${event.categoria}</div>
+                 <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
+              </div>
+            </td>
+          </tr>
+        `;
+        finalHTML = finalHTML + eventHTML;
+     }
 
-         tbodyE.innerHTML = finalHTML;
-         //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
-        }else{
-        tbodyE.innerHTML = finalHTML;
-        }
-
+     tbodyE.innerHTML = finalHTML;
+     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+    }else{
+    tbodyE.innerHTML = finalHTML;
     }
+
+}
 
 function renderTable(){
 
@@ -148,7 +218,7 @@ function renderTable(){
                tbody.innerHTML = finalHTML;
               //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
           }else{
-            tbodyE.innerHTML = finalHTML;
+            tbody.innerHTML = finalHTML;
           }
 
 
@@ -175,6 +245,26 @@ async function deleteEvent(id){
     await sleep(500);
     renderTable();
     renderTableEvents();
+
+}
+
+async function deletePrio(id){
+    var prio = prios[id];
+
+    const response = await fetch('/prio/delete', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(prio)
+    });
+
+    await loadProducts();
+    await loadPrios();
+    await sleep(500);
+    renderTable();
+    renderTablePrios();
 
 }
 
@@ -240,6 +330,104 @@ async function sendEvent(){
     var month_fi = $('#month_fi').val();
     var year_fi = $('#year_fi').val();
 
+    var valid = chekDates(day_ini,month_ini,year_ini,day_fi,month_fi,year_fi);
+
+    if(valid){
+
+
+        var data_ini = String(year_ini) +"-"+ String(month_ini) +"-"+ String(day_ini);
+        var data_fi = String(year_fi) +"-"+ String(month_fi) +"-"+ String(day_fi);
+        var categoriaEvent = $('#categoriy-event').val();
+
+        var event = {
+            categoria: categoriaEvent,
+            date_ini: data_ini,
+            date_fi: data_fi
+        }
+
+        const response = await fetch('/event/insert', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(event)
+        });
+    }else{
+
+    }
+
+    await loadEvents();
+    await loadProducts();
+
+    renderTable();
+    renderTableEvents();
+
+
+
+
+
+
+}
+
+async function sendPrio(){
+
+    var day_ini = $('#day_ini_prio').val();
+    var month_ini = $('#month_ini_prio').val();
+    var year_ini = $('#year_ini_prio').val();
+
+    var day_fi = $('#day_fi_prio').val();
+    var month_fi = $('#month_fi_prio').val();
+    var year_fi = $('#year_fi_prio').val();
+
+
+
+    var valid = chekDates(day_ini,month_ini,year_ini,day_fi,month_fi,year_fi);
+    console.log(valid);
+    if(valid){
+
+
+        var data_ini = String(year_ini) +"-"+ String(month_ini) +"-"+ String(day_ini);
+        var data_fi = String(year_fi) +"-"+ String(month_fi) +"-"+ String(day_fi);
+
+        var productId = $('#prod_prio').val();
+        var productIndex = $('#position_prio').val() - 1;
+
+        console.log(data_ini);
+        console.log(data_fi);
+        var prioritat = {
+            product: productId,
+            position: productIndex,
+            date_ini: data_ini,
+            date_fi: data_fi
+        }
+
+        const response = await fetch('/prio/insert', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(prioritat)
+        });
+    }else{
+
+    }
+
+    await loadPrios();
+    await loadProducts();
+
+    renderTable();
+    renderTablePrios();
+
+
+
+
+}
+
+
+function chekDates(day_ini,month_ini,year_ini,day_fi,month_fi,year_fi){
+
     var valid = true;
 
     if(year_ini>1000 && year_ini < 9999 && year_fi>1000 && year_fi < 9999){
@@ -295,45 +483,31 @@ async function sendEvent(){
         console.log(year_fi);
     }
 
-    if(valid){
-
-
-        var data_ini = String(year_ini) +"-"+ String(month_ini) +"-"+ String(day_ini);
-        var data_fi = String(year_fi) +"-"+ String(month_fi) +"-"+ String(day_fi);
-        var categoriaEvent = $('#categoriy-event').val();
-
-        var event = {
-            categoria: categoriaEvent,
-            date_ini: data_ini,
-            date_fi: data_fi
-        }
-
-        const response = await fetch('/event/insert', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(event)
-        });
-    }else{
-
-    }
-
-    await loadEvents();
-    await loadProducts();
-
-    await sleep(500);
-
-    renderTable();
-    renderTableEvents();
+    return valid;
+}
 
 
 
+function loadSelectPrios(day_ini,) {
+
+    var products_aux = products;
+
+    products_aux.sort(function(a, b) {
+        return a.id - b.id;
+    });
+
+    $.each(products_aux, function(index, product) {
+        $('#prod_prio').append(new Option(`${product.id} - ${product.name}`, product.id));
+        $('#position_prio').append(new Option(`${product.id}`, product.id));
+
+    });
 
 
 
 }
+
+
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

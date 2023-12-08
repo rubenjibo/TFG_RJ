@@ -57,10 +57,10 @@ public class EventService {
             prodsAux.add(p);
 
         }
-        for(Product pr:prods){
+        /*for(Product pr:prods){
             System.out.println("ID: " +pr.getId()+ " Name: " + pr.getName());
-        }
-        System.out.println(prodsAux);
+        }*/
+
         List<Boolean> prio = new ArrayList<>();
 
         for(int a = 0; a < prodsAux.size();a++){
@@ -105,7 +105,7 @@ public class EventService {
             }
 
         }
-        System.out.println(prio);
+
         prodsEvent.addAll(prodsNoEvent);
 
         return prodsEvent;

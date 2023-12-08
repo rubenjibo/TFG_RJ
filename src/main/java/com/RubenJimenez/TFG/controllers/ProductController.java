@@ -2,6 +2,7 @@ package com.RubenJimenez.TFG.controllers;
 
 import com.RubenJimenez.TFG.models.Product;
 import com.RubenJimenez.TFG.service.EventService;
+import com.RubenJimenez.TFG.service.PrioritatService;
 import com.RubenJimenez.TFG.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,21 @@ public class ProductController {
 
     @Autowired
     private EventService eventService;
+
+    @Autowired
+    private PrioritatService prioService;
+
+
+
     @GetMapping("/findAll")
     public Iterable<Product> findAll(){
+        return prioService.sortProductsOnPrio(
+                eventService.sortProductsOnEvents(
+                productService.getProducts()));
 
-        return eventService.sortProductsOnEvents(productService.getProducts());
+        /*return eventService.sortProductsOnEvents(
+                        productService.getProducts());*/
+
     }
 
     @GetMapping("/filterProducts")

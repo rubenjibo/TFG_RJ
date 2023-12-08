@@ -81,6 +81,30 @@ main {
       height: 50px;
   }
 
+
+  .prio-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+  }
+
+  .prio-row-dates{
+
+        display: flex;
+        flex-direction: row;
+
+  }
+
+  .prio-row-numbers{
+
+        display: flex;
+        flex-direction: row;
+
+  }
+
+
+
   .product-img {
     flex: 40%;
   }
@@ -180,6 +204,12 @@ main {
        display: flex;
        flex-direction: row;
   }
+
+  .admin-containers{
+    display:flex;
+    flex-direction: column;
+  }
+
   .form-containers-column {
          display: flex;
          flex-direction: column;
@@ -201,9 +231,30 @@ main {
 
   }
 
+  .form-containers-prio {
+         display: flex;
+         flex-direction: row;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          height: 400px;
+    }
+
+  .form-container-prio{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        margin: auto;
+        padding: 20px;
+
+   }
+
   .form-container label, .form-container input, .form-container select, .form-container button {
       margin: 10px 0;
   }
+
+  .form-container-prio label, .form-container-prio input, .form-container-prio select, .form-container-prio button {
+        margin: 10px 0;
+    }
 
   button {
       background-color: #4CAF50;
