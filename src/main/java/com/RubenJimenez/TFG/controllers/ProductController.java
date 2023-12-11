@@ -1,6 +1,9 @@
 package com.RubenJimenez.TFG.controllers;
 
+import com.RubenJimenez.TFG.models.Event;
+import com.RubenJimenez.TFG.models.Prioritat;
 import com.RubenJimenez.TFG.models.Product;
+import com.RubenJimenez.TFG.models.RequestData;
 import com.RubenJimenez.TFG.service.EventService;
 import com.RubenJimenez.TFG.service.PrioritatService;
 import com.RubenJimenez.TFG.service.ProductService;
@@ -27,12 +30,47 @@ public class ProductController {
 
     @GetMapping("/findAll")
     public Iterable<Product> findAll(){
+
         return prioService.sortProductsOnPrio(
                 eventService.sortProductsOnEvents(
-                productService.getProducts()));
+                productService.getProducts())
+        );
+    }
 
-        /*return eventService.sortProductsOnEvents(
-                        productService.getProducts());*/
+    @PostMapping("/findAllProv")
+    public Iterable<Product> findAllProv(@RequestBody RequestData requestData){
+
+
+        Event[] eventsProv = requestData.getEventsProv();
+        Prioritat[] priosProv = requestData.getPriosProv();
+
+        if(eventsProv.length == 0  && priosProv.length != 0 ){
+            return prioService.sortProductsOnPrioProv(priosProv,
+                    eventService.sortProductsOnEvents(
+                            productService.getProducts())
+            );
+        } else if (eventsProv.length != 0 && priosProv.length == 0 ) {
+            return prioService.sortProductsOnPrio(
+                    eventService.sortProductsOnEventsProv(eventsProv,
+                            productService.getProducts())
+            );
+        } else if (eventsProv.length == 0 && priosProv.length == 0) {
+
+            return prioService.sortProductsOnPrio(
+                    eventService.sortProductsOnEvents(
+                            productService.getProducts())
+            );
+
+        } else {
+            return prioService.sortProductsOnPrioProv(priosProv,
+                    eventService.sortProductsOnEventsProv(eventsProv,
+                            productService.getProducts())
+            );
+        }
+
+
+
+
 
     }
 
@@ -59,3 +97,5 @@ public class ProductController {
         return productService.updateProduct(prod);
     }
 }
+
+

@@ -108,6 +108,86 @@ public class PrioritatService {
         return prodsAux;
     }
 
+    public Iterable<Product> sortProductsOnPrioProv(Prioritat[] prioProv , Iterable<Product> prods ){
+
+        LocalDate fechaHoyNoFormat = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dateTodayAux = fechaHoyNoFormat.format(formateador);
+        LocalDate dateToday = LocalDate.parse(dateTodayAux, formateador);
+
+        Iterable<Prioritat> prioritats = getPrios();
+
+
+
+        List<Prioritat> prioritatsAux = new ArrayList<>();
+
+        for(Prioritat p: prioritats){
+            prioritatsAux.add(p);
+        }
+
+        for(Prioritat p:prioProv){
+            prioritatsAux.add(p);
+        }
+
+        List<Integer> indexReserved = new ArrayList<>();
+        List<Integer> prodReserved = new ArrayList<>();
+        for(Prioritat p:prioritatsAux){
+
+            //comprobar si estan on date
+
+            LocalDate dateIni = LocalDate.parse(ajustarFormatoFecha(p.getDate_ini()), formateador);
+            LocalDate dateFi = LocalDate.parse(ajustarFormatoFecha(p.getDate_fi()), formateador);
+
+            if(dateToday.isAfter(dateIni) && dateToday.isBefore(dateFi)) {
+
+                indexReserved.add(p.getPosition());
+                prodReserved.add(p.getProduct());
+
+            }
+
+        }
+
+
+
+        List<Product> prodsPrio = new ArrayList<>();
+        List<Product> prodsNoPrio = new ArrayList<>();
+        for (Product p : prods) {
+            if(prodReserved.contains(p.getId())){
+                prodsPrio.add(p);
+            }else{
+                prodsNoPrio.add(p);
+            }
+
+        }
+
+        System.out.println(prodsPrio);
+        System.out.println(prodsNoPrio);
+
+        var totalLen=prodsPrio.size() + prodsNoPrio.size();
+        List<Product> prodsAux = new ArrayList<>();
+        var y=0;
+        for(int i=0; i < totalLen; i++){
+
+            if(indexReserved.contains(i)){
+
+                var indexAux=indexReserved.indexOf(i);
+                var prodid=prodReserved.get(indexAux);
+                for (Product p2:prodsPrio){
+                    if(p2.getId()==prodid){
+                        prodsAux.add(p2);
+                    }
+                }
+
+            }else{
+                prodsAux.add(prodsNoPrio.get(y));
+                y++;
+            }
+
+        }
+
+        return prodsAux;
+    }
+
     public static String ajustarFormatoFecha(String fecha) {
         String[] partes = fecha.split("-");
 

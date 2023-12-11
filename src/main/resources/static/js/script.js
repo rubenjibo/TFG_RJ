@@ -1,8 +1,14 @@
 let products = [];
 let events = [];
-let prios = []
+let prios = [];
+let eventsProv = [];
+let priosProv = [];
 let currentPage = 0;
 const itemsPerPage = 10;
+let username= "";
+let userpwd= "";
+let adminMode=0;
+
 
 $(document).ready(async function() {
 
@@ -24,6 +30,17 @@ $(document).ready(async function() {
    $('#search-button').on('click', function() {
            filterProducts();
    });
+
+    $('#login-button').on('click', function() {
+              $("#loginModal").hide();
+              login();
+
+    });
+
+    $('#logout-button').on('click', function() {
+  logout();
+
+    });
 
    $('#send-event').on('click', function() {
               sendEvent();
@@ -51,15 +68,39 @@ $(document).ready(async function() {
 
 async function loadProducts(){
 
-      const request = await fetch('product/findAll', {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
+      if(adminMode == 0){
+        const request = await fetch('product/findAll', {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
 
-      });
-      products = await request.json();
+        });
+        products = await request.json();
+
+      }else if(adminMode == 1){
+
+        const requestData = {
+            eventsProv: eventsProv,
+            priosProv: priosProv
+        };
+        console.log(requestData);
+        const request = await fetch('product/findAllProv', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        });
+        products = await request.json();
+
+
+      }
+
+
+
 
       console.log("load products");
       console.log(products);
@@ -95,89 +136,6 @@ async function loadPrios(){
       response = await request.json();
       prios = response.content;
       console.log("load prios");
-
-}
-
-function renderTablePrios(){
-    const tbodyE = document.querySelector('#TablaPrio tbody');
-
-    if (!tbodyE) {
-       console.error('tbodyE no encontrado');
-       return;
-    }
-
-    let finalHTML = "";
-
-
-    if (prios.length > 0){
-     for (let y =0; y <  prios.length; y++) {
-        const prio = prios[y];
-
-        let prioHTML = `
-          <tr>
-            <td>
-              <div class="prio-row">
-                 <div class="prio-row-dates">
-                    <div class="prio-dataini">${prio.date_ini}  </div>
-                    <div class="prio-dataini">${prio.date_fi}</div>
-                    <div><button data-id="${y}" onclick="deletePrio(${y})"> X </button></div>
-                 </div>
-
-                 <div class="prio-row-numbers">
-                     <div class="prio-product">ID: ${prio.product}  </div>
-                     <div class="prio-position">Index: ${prio.position}</div>
-                 </div>
-
-              </div>
-            </td>
-          </tr>
-        `;
-        finalHTML = finalHTML + prioHTML;
-     }
-
-     tbodyE.innerHTML = finalHTML;
-     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
-    }else{
-    tbodyE.innerHTML = finalHTML;
-    }
-
-}
-
-function renderTableEvents(){
-    const tbodyE = document.querySelector('#TablaEvent tbody');
-
-    if (!tbodyE) {
-       console.error('tbodyE no encontrado');
-       return;
-    }
-
-    let finalHTML = "";
-    console.log(events)
-
-    if (events.length > 0){
-     for (let y =0; y <  events.length; y++) {
-        const event = events[y];
-
-        let eventHTML = `
-          <tr>
-            <td>
-              <div class="event-row">
-                 <div class="event-dataini">${event.date_ini}</div>
-                 <div class="event-datafi">${event.date_fi}</div>
-                 <div class="event-category">${event.categoria}</div>
-                 <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
-              </div>
-            </td>
-          </tr>
-        `;
-        finalHTML = finalHTML + eventHTML;
-     }
-
-     tbodyE.innerHTML = finalHTML;
-     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
-    }else{
-    tbodyE.innerHTML = finalHTML;
-    }
 
 }
 
@@ -228,21 +186,214 @@ function renderTable(){
 
 }
 
+
+
+function renderTableEvents(){
+    const tbodyE = document.querySelector('#TablaEvent tbody');
+
+    if (!tbodyE) {
+       console.error('tbodyE no encontrado');
+       return;
+    }
+
+    let finalHTML = "";
+    console.log(events)
+
+    if(eventsProv.length > 0){
+
+        for(let i=0; i < eventsProv.length; i++){
+
+            const eventProv = eventsProv[i];
+
+
+            let eventProvHTML = `
+              <tr>
+                <td>
+                  <div class="event-row">
+                     <div class="event-dataini">${eventProv.date_ini}</div>
+                     <div class="event-datafi">${eventProv.date_fi}</div>
+                     <div class="event-category">${eventProv.categoria}</div>
+                     <div><button data-id="${i}" onclick="saveEventProv(${i})"> Save </button></div>
+                     <div><button data-id="${i}" onclick="deleteEventProv(${i})"> X </button></div>
+                  </div>
+                </td>
+              </tr>
+            `;
+            finalHTML = finalHTML + eventProvHTML;
+        }
+    }
+
+
+    if (events.length > 0){
+     for (let y =0; y <  events.length; y++) {
+        const event = events[y];
+
+        let eventHTML = `
+          <tr>
+            <td>
+              <div class="event-row">
+                 <div class="event-dataini">${event.date_ini}</div>
+                 <div class="event-datafi">${event.date_fi}</div>
+                 <div class="event-category">${event.categoria}</div>
+                 <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
+              </div>
+            </td>
+          </tr>
+        `;
+        finalHTML = finalHTML + eventHTML;
+     }
+
+
+     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+    }
+    tbodyE.innerHTML = finalHTML;
+
+
+}
+
+function renderTablePrios(){
+    const tbodyE = document.querySelector('#TablaPrio tbody');
+
+    if (!tbodyE) {
+       console.error('tbodyE no encontrado');
+       return;
+    }
+
+    let finalHTML = "";
+
+
+    if(priosProv.length > 0){
+
+        for(let i=0; i < priosProv.length; i++){
+
+            const prioProv = priosProv[i];
+
+
+            let eventProvHTML = `
+              <tr>
+                  <td>
+                    <div class="prio-row">
+                       <div class="prio-row-dates">
+                          <div class="prio-dataini">${prioProv.date_ini}  </div>
+                          <div class="prio-dataini">${prioProv.date_fi}</div>
+
+                       </div>
+
+                       <div class="prio-row-numbers">
+                           <div class="prio-product">ID: ${prioProv.product}  </div>
+                           <div class="prio-position">Index: ${prioProv.position}</div>
+                           <div><button data-id="${i}" onclick="savePrioProv(${i})"> Save </button></div>
+                           <div><button data-id="${i}" onclick="deletePrioProv(${i})"> X </button></div>
+                       </div>
+
+                    </div>
+                  </td>
+              </tr>
+            `;
+            finalHTML = finalHTML + eventProvHTML;
+        }
+    }
+
+
+    if (prios.length > 0){
+     for (let y =0; y <  prios.length; y++) {
+        const prio = prios[y];
+
+        let prioHTML = `
+          <tr>
+            <td>
+              <div class="prio-row">
+                 <div class="prio-row-dates">
+                    <div class="prio-dataini">${prio.date_ini}  </div>
+                    <div class="prio-dataini">${prio.date_fi}</div>
+
+                 </div>
+
+                 <div class="prio-row-numbers">
+                     <div class="prio-product">ID: ${prio.product}  </div>
+                     <div class="prio-position">Index: ${prio.position}</div>
+                     <div><button data-id="${y}" onclick="deletePrio(${y})"> X </button></div>
+                 </div>
+
+              </div>
+            </td>
+          </tr>
+        `;
+        finalHTML = finalHTML + prioHTML;
+     }
+
+     tbodyE.innerHTML = finalHTML;
+     //document.querySelector('#TablaProd tbody').outerHTML=finalHTML;
+    }else{
+    tbodyE.innerHTML = finalHTML;
+    }
+
+}
+
+function deleteEventProv(index){
+
+    eventsProv.splice(index,1);
+    loadProducts();
+    renderTableEvents();
+    renderTable();
+
+}
+
+function deletePrioProv(index){
+
+    priosProv.splice(index,1);
+    loadProducts();
+    renderTablePrios();
+    renderTable();
+
+}
+
+async function saveEventProv(index){
+
+        var eventSend = eventsProv[index];
+        eventsProv.splice(index,1);
+
+        const base64Credentials = btoa(username + ":" + userpwd);
+        const response = await fetch('/event/insert', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + base64Credentials
+            },
+            body: JSON.stringify(eventSend)
+        });
+
+
+
+        await loadProducts();
+        await loadEvents();
+
+        renderTable();
+        renderTableEvents();
+
+}
+
+
+
 async function deleteEvent(id){
     var event = events[id];
+
+    const base64Credentials = btoa(username + ":" + userpwd);
 
     const response = await fetch('/event/delete', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + base64Credentials
         },
         body: JSON.stringify(event)
     });
 
     await loadProducts();
     await loadEvents();
-    await sleep(500);
+
     renderTable();
     renderTableEvents();
 
@@ -250,19 +401,20 @@ async function deleteEvent(id){
 
 async function deletePrio(id){
     var prio = prios[id];
-
+    const base64Credentials = btoa(username + ":" + userpwd);
     const response = await fetch('/prio/delete', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + base64Credentials
         },
         body: JSON.stringify(prio)
     });
 
     await loadProducts();
     await loadPrios();
-    await sleep(500);
+
     renderTable();
     renderTablePrios();
 
@@ -345,19 +497,14 @@ async function sendEvent(){
             date_fi: data_fi
         }
 
-        const response = await fetch('/event/insert', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(event)
-        });
+        eventsProv.push(event);
+
+
     }else{
 
     }
 
-    await loadEvents();
+
     await loadProducts();
 
     renderTable();
@@ -402,25 +549,46 @@ async function sendPrio(){
             date_fi: data_fi
         }
 
-        const response = await fetch('/prio/insert', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(prioritat)
-        });
+        priosProv.push(prioritat);
+
+
     }else{
 
     }
 
-    await loadPrios();
+
     await loadProducts();
 
     renderTable();
     renderTablePrios();
 
 
+
+
+}
+
+async function savePrioProv(index){
+
+    var prioSend = priosProv[index];
+    priosProv.splice(index,1);
+
+    const base64Credentials = btoa(username + ":" + userpwd);
+    const response = await fetch('/prio/insert', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + base64Credentials
+        },
+        body: JSON.stringify(prioSend)
+    });
+
+
+    await loadPrios();
+    await loadProducts();
+
+    renderTable();
+    renderTablePrios();
 
 
 }
@@ -490,7 +658,7 @@ function chekDates(day_ini,month_ini,year_ini,day_fi,month_fi,year_fi){
 
 function loadSelectPrios(day_ini,) {
 
-    var products_aux = products;
+    var products_aux = Array.from(products);
 
     products_aux.sort(function(a, b) {
         return a.id - b.id;
@@ -506,10 +674,54 @@ function loadSelectPrios(day_ini,) {
 
 }
 
+async function login(){
+    var name = $('#username').val();
+    var pwd = $('#password').val();
+
+    var loginData = {
+        name: name,
+        pwd: pwd
+    }
 
 
+    const response = await fetch('/user/checkUser', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+        },
+        body: JSON.stringify(loginData)
+    });
+
+
+    const responseData = await response.json();
+    console.log("Login: " + responseData);
+    if(responseData){
+        //display true
+        username = name;
+        userpwd = pwd;
+        adminMode = 1;
+        $(".admin-containers").css('display', 'flex');
+        $("#session-button").css('display', 'none');
+        $("#logout-button").css('display', 'inline-block');
+
+    }else{
+         alert("L'usuari o la contrasenya no son correctes");
+    }
 }
+
+function logout(){
+
+    username="";
+    userpwd="";
+    adminMode=0;
+
+    $(".admin-containers").css('display', 'none');
+    $("#session-button").css('display', 'inline-block');
+    $("#logout-button").css('display', 'none');
+
+
+}
+
 

@@ -42,7 +42,7 @@ public class EventService {
         String dateTodayAux = fechaHoyNoFormat.format(formateador);
         LocalDate dateToday = LocalDate.parse(dateTodayAux, formateador);
 
-        System.out.println(dateToday);
+
 
         Iterable<Event> events = getEvents();
 
@@ -57,9 +57,7 @@ public class EventService {
             prodsAux.add(p);
 
         }
-        /*for(Product pr:prods){
-            System.out.println("ID: " +pr.getId()+ " Name: " + pr.getName());
-        }*/
+
 
         List<Boolean> prio = new ArrayList<>();
 
@@ -111,6 +109,84 @@ public class EventService {
         return prodsEvent;
     }
 
+
+    public Iterable<Product> sortProductsOnEventsProv(Event[] eventsProv, Iterable<Product> prods ){
+
+        LocalDate fechaHoyNoFormat = LocalDate.now();
+        DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dateTodayAux = fechaHoyNoFormat.format(formateador);
+        LocalDate dateToday = LocalDate.parse(dateTodayAux, formateador);
+
+
+
+        Iterable<Event> events = getEvents();
+
+        List<Event> eventsAux = new ArrayList<>();
+        for (Event e : events) {
+            eventsAux.add(e);
+        }
+
+        for(Event e:eventsProv){
+            eventsAux.add(e);
+        }
+
+
+        List<Product> prodsAux = new ArrayList<>();
+        for (Product p : prods) {
+            prodsAux.add(p);
+
+        }
+
+
+        List<Boolean> prio = new ArrayList<>();
+
+        for(int a = 0; a < prodsAux.size();a++){
+            prio.add(false);
+        }
+
+        for (int i = 0 ; i < eventsAux.size() ; i++){
+
+            String category = eventsAux.get(i).getCategoria();
+
+            LocalDate dateIni = LocalDate.parse(ajustarFormatoFecha(eventsAux.get(i).getDate_ini()), formateador);
+            LocalDate dateFi = LocalDate.parse(ajustarFormatoFecha(eventsAux.get(i).getDate_fi()), formateador);
+
+            if (dateToday.isAfter(dateIni) && dateToday.isBefore(dateFi)) {
+
+                for(int y = 0; y < prodsAux.size();y++){
+
+                    String[] categoryesProd = prodsAux.get(y).getCategory();
+
+
+                    for (String categ : categoryesProd) {
+                        if (categ.equals(category)) {
+                            prio.set(y,true);
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+        List<Product> prodsEvent = new ArrayList<>();
+
+        List<Product> prodsNoEvent = new ArrayList<>();
+
+        for (int z = 0; z < prodsAux.size();z++) {
+            if(prio.get(z)){
+                prodsEvent.add(prodsAux.get(z));
+
+            }else{
+                prodsNoEvent.add(prodsAux.get(z));
+            }
+
+        }
+
+        prodsEvent.addAll(prodsNoEvent);
+
+        return prodsEvent;
+    }
     public static String ajustarFormatoFecha(String fecha) {
         String[] partes = fecha.split("-");
 

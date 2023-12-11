@@ -12,10 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.data.domain.Sort;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.Arrays;
-import java.util.List;
+
 import java.util.Optional;
 import java.util.stream.Collectors;
 
