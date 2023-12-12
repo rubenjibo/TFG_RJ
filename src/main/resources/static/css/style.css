@@ -65,8 +65,23 @@ main {
      align-items: center;
 }
 
+#table-container2 {
+
+     margin: 0 auto;
+     width: 70%;
+     display: flex;
+     flex-direction: column;  /* Añade flex-direction */
+     align-items: center;
+}
+
 
 #TablaProd {
+    border-radius: 4px;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+#TablaProd2 {
     border-radius: 4px;
     border-collapse: collapse;
     margin: auto;
@@ -77,6 +92,12 @@ main {
     padding: 8px;
     text-align: left;
   }
+
+  #TablaProd2 th, #TablaProd2 td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
 
   .product-row {
     display: flex;

@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -50,6 +50,19 @@
     <div class="main-container">
         <div id="table-container">
             <table id="TablaProd">
+                <thead>
+                <tr>
+                    <th>Products</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="table-container2">
+            <table id="TablaProd2">
                 <thead>
                 <tr>
                     <th>Products</th>
@@ -170,10 +183,12 @@
                     <label for="year_ini_prio">Añy inici</label>
                     <input type="number" id="year_ini_prio" name="year_ini_prio">
 
-                    <label for="prod_prio">Selecciona el producte</label>
+                    <label id="label_prod_prio" for="prod_prio">Selecciona el producte</label>
                     <select id="prod_prio" name="prod_prio">
 
                     </select>
+
+                    <button id="prio-mode">Drag and Drop</button>
 
                 </div>
                 <div class="form-container-prio">
@@ -202,7 +217,7 @@
                     <label for="year_fi_prio">Añy fi</label>
                     <input type="number" id="year_fi_prio" name="year_fi_prio">
 
-                    <label for="position_prio">Selecciona posicio</label>
+                    <label id="label_position_prio" for="position_prio">Selecciona posicio</label>
                     <select id="position_prio" name="position_prio">
 
                     </select>
