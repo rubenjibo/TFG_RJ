@@ -37,7 +37,7 @@ main {
 
     margin-top: 30px;
     width: 100%;
-    display: block;  /* Cambia flex a block */
+    display: block;
 }
 
 #table-container {
@@ -45,7 +45,7 @@ main {
      margin: 0 auto;
      width: 70%;
      display: flex;
-     flex-direction: column;  /* AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±ade flex-direction */
+     flex-direction: column;
      align-items: center;
 }
 
@@ -90,7 +90,7 @@ th {
 
   .product-img {
     flex: 40%;
-    background: #fff; /* Fondo blanco para la imagen */
+    background: #fff;
     border: 1px solid #ddd;
   }
 
@@ -108,18 +108,18 @@ th {
 
   .product-name {
     flex: 25%;
-    font-size: 25px; /* Tamaño más grande para el título */
-    text-decoration: underline; /* Título subrayado */
+    font-size: 25px;
+    text-decoration: underline;
     text-decoration-color: #9fbed2;
     margin-bottom: 4px;
   }
 
   .product-desc {
     flex: 50%;
-    border: 1px solid #ffffff; /* Borde azul grisáceo */
+    border: 1px solid #ffffff;
     padding: 4px;
-    border-radius: 10px; /* Bordes redondeados */
-    margin-bottom: 4px; /* Espaciado debajo de la descripción */
+    border-radius: 10px;
+    margin-bottom: 4px;
 
   }
 
@@ -132,7 +132,7 @@ th {
   .product-category {
     flex: 50%;
     text-align: left;
-    font-size: 13px; /* Tamaño más pequeño para la categoría */
+    font-size: 13px;
     color: #696969;
     margin-top:25px;
   }
@@ -159,27 +159,27 @@ th {
 
   }
 
-  /* Estilo del fondo oscurecido */
+
   .modal {
-      display: none; /* Oculto por defecto */
-      position: fixed; /* Fijo en la posiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
-      z-index: 1; /* Situado sobre el resto del contenido */
+      display: none;
+      position: fixed;
+      z-index: 1;
       left: 0;
       top: 0;
-      width: 100%; /* Anchura completa */
-      height: 100%; /* Altura completa */
-      overflow: auto; /* Habilitar scroll si es necesario */
-      background-color: rgb(0,0,0); /* Color de fondo */
-      background-color: rgba(0,0,0,0.4); /* Negro con opacidad */
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
   }
 
-  /* Estilo del contenido del modal */
+
   .modal-content {
       background-color: #fefefe;
-      margin: 15% auto; /* 15% desde arriba y centrado */
+      margin: 15% auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 40%; /* Anchura del contenido */
+      width: 40%;
   }
 
 
@@ -277,7 +277,7 @@ border-radius: 4px;
   }
 
   #session-button {
-      background-color: #008CBA; /* Color azul para el botÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
+      background-color: #008CBA;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -288,7 +288,7 @@ border-radius: 4px;
 
   #logout-button {
       display: none;
-      background-color: #008CBA; /* Color azul para el botÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
+      background-color: #008CBA;
       color: white;
       padding: 10px 20px;
       border: none;
