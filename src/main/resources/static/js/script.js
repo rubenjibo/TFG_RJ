@@ -150,9 +150,9 @@ async function filterProducts(){
     if(categ != "None"){
         selectedCategories.push(categ);
     }
-
-
-    if(searchText!='' || selectedCategories != []){
+    console.log(searchText);
+    console.log(selectedCategories);
+    if(searchText!='' || selectedCategories.length != 0){
         const request = await fetch(`product/filterProducts?searchText=${encodeURIComponent(searchText)}&categories=${encodeURIComponent(selectedCategories)}`, {
                 method: 'GET',
                 headers: {
@@ -165,10 +165,11 @@ async function filterProducts(){
 
         products = await request.json();
 
-        console.log("load products");
+
         renderTable();
     }else{
-        loadProducts()
+
+        await loadProducts()
         renderTable();
     }
 
@@ -259,7 +260,7 @@ function renderTable(){
                               <div class="product-desc">${product.desc}</div>
                               <div class="product-footer">
                                 <div class="product-category">${product.category.join(', ')}</div>
-                                <div class="product-price">${product.price.toFixed(2)}</div>
+                                <div class="product-price">${product.price.toFixed(2)} €</div>
                               </div>
                             </div>
                           </div>
@@ -284,7 +285,7 @@ function renderTable(){
                               <div class="product-desc">${product.desc}</div>
                               <div class="product-footer">
                                 <div class="product-category">${product.category.join(', ')}</div>
-                                <div class="product-price">${product.price.toFixed(2)}</div>
+                                <div class="product-price">${product.price.toFixed(2)} €</div>
                               </div>
                             </div>
                           </div>
@@ -349,15 +350,16 @@ function renderTableEvents(){
 
             let eventProvHTML = `
               <tr>
-                <td>
-                  <div class="event-row">
-                     <div class="event-dataini">${eventProv.date_ini}</div>
-                     <div class="event-datafi">${eventProv.date_fi}</div>
-                     <div class="event-category">${eventProv.categoria}</div>
-                     <div><button data-id="${i}" onclick="saveEventProv(${i})"> Save </button></div>
-                     <div><button data-id="${i}" onclick="deleteEventProv(${i})"> X </button></div>
-                  </div>
-                </td>
+                     <td>${eventProv.date_ini}</td>
+                     <td>${eventProv.date_fi}</td>
+                     <td>${eventProv.categoria}</td>
+                     <td>
+                         <div class="button-div">
+                            <button class="save-button" data-id="${i}" onclick="saveEventProv(${i})"> Save </button>
+                            <button class="delete-button" data-id="${i}" onclick="deleteEventProv(${i})"> X </button>
+                         </div>
+                     </td>
+
               </tr>
             `;
             finalHTML = finalHTML + eventProvHTML;
@@ -371,14 +373,16 @@ function renderTableEvents(){
 
         let eventHTML = `
           <tr>
-            <td>
-              <div class="event-row">
-                 <div class="event-dataini">${event.date_ini}</div>
-                 <div class="event-datafi">${event.date_fi}</div>
-                 <div class="event-category">${event.categoria}</div>
-                 <div><button data-id="${y}" onclick="deleteEvent(${y})"> X </button></div>
-              </div>
-            </td>
+
+                 <td>${event.date_ini}</td>
+                 <td>${event.date_fi}</td>
+                 <td>${event.categoria}</td>
+                 <td>
+                     <div class="button-div">
+                        <button class="delete-button" data-id="${y}" onclick="deleteEvent(${y})"> X </button>
+                     </div>
+                 </td>
+
           </tr>
         `;
         finalHTML = finalHTML + eventHTML;
@@ -412,22 +416,16 @@ function renderTablePrios(){
 
             let eventProvHTML = `
               <tr>
+
+                  <td>${prioProv.date_ini}  </td>
+                  <td>${prioProv.date_fi}   </td>
+                  <td>ID: ${prioProv.product} </td>
+                  <td>Index: ${showIndex}   </td>
                   <td>
-                    <div class="prio-row">
-                       <div class="prio-row-dates">
-                          <div class="prio-dataini">${prioProv.date_ini}  </div>
-                          <div class="prio-dataini">${prioProv.date_fi}</div>
-
-                       </div>
-
-                       <div class="prio-row-numbers">
-                           <div class="prio-product">ID: ${prioProv.product}  </div>
-                           <div class="prio-position">Index: ${showIndex}</div>
-                           <div><button data-id="${i}" onclick="savePrioProv(${i})"> Save </button></div>
-                           <div><button data-id="${i}" onclick="deletePrioProv(${i})"> X </button></div>
-                       </div>
-
-                    </div>
+                   <div class="button-div">
+                       <button class="save-button" data-id="${i}" onclick="savePrioProv(${i})"> Save </button>
+                       <button class="delete-button" data-id="${i}" onclick="deletePrioProv(${i})"> X </button>
+                   </div>
                   </td>
               </tr>
             `;
@@ -439,25 +437,19 @@ function renderTablePrios(){
     if (prios.length > 0){
      for (let y =0; y <  prios.length; y++) {
         const prio = prios[y];
-
+        let showIndex = prio.position+1;
         let prioHTML = `
           <tr>
-            <td>
-              <div class="prio-row">
-                 <div class="prio-row-dates">
-                    <div class="prio-dataini">${prio.date_ini}  </div>
-                    <div class="prio-dataini">${prio.date_fi}</div>
+             <td>${prio.date_ini}  </td>
+              <td>${prio.date_fi}   </td>
+              <td>ID: ${prio.product} </td>
+              <td>Index: ${showIndex}   </td>
+              <td>
+                  <div class="button-div">
+                    <button class="delete-button" data-id="${y}" onclick="deletePrio(${y})"> X </button>
+                  </div>
+              </td>
 
-                 </div>
-
-                 <div class="prio-row-numbers">
-                     <div class="prio-product">ID: ${prio.product}  </div>
-                     <div class="prio-position">Index: ${prio.position}</div>
-                     <div><button data-id="${y}" onclick="deletePrio(${y})"> X </button></div>
-                 </div>
-
-              </div>
-            </td>
           </tr>
         `;
         finalHTML = finalHTML + prioHTML;

@@ -6,7 +6,7 @@ header {
 
 #top-bar {
     width: 100%;
-    background-color: lightblue;
+    background-color: #d6ecf3;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,28 +20,11 @@ header {
     border: 1px solid #ccc;
 }
 
-#session-button {
-    background-color: #008CBA; /* Color azul para el botón */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 30px;
-}
 
-#logout-button {
-    display: none;
-    background-color: #008CBA; /* Color azul para el botón */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 30px;
-}
 
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     min-height: 100vh;
     display: flex;
@@ -51,6 +34,7 @@ body {
 }
 
 main {
+
     margin-top: 30px;
     width: 100%;
     display: block;  /* Cambia flex a block */
@@ -61,43 +45,37 @@ main {
      margin: 0 auto;
      width: 70%;
      display: flex;
-     flex-direction: column;  /* Añade flex-direction */
-     align-items: center;
-}
-
-#table-container2 {
-
-     margin: 0 auto;
-     width: 70%;
-     display: flex;
-     flex-direction: column;  /* Añade flex-direction */
+     flex-direction: column;  /* AÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±ade flex-direction */
      align-items: center;
 }
 
 
-#TablaProd {
+
+
+#TablaEvent, #TablaPrio {
     border-radius: 4px;
     border-collapse: collapse;
     margin: auto;
+    width:400px;
 }
 
-#TablaProd2 {
-    border-radius: 4px;
-    border-collapse: collapse;
-    margin: auto;
-}
 
-  #TablaProd th, #TablaProd td {
-    border: 1px solid #000;
+
+
+#TablaProd th, #TablaProd td,
+#TablaProd2 th, #TablaProd2 td,
+#TablaEvent th, #TablaEvent td,
+#TablaPrio th, #TablaPrio td {
+    border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
-  }
+    text-align: center;
+}
 
-  #TablaProd2 th, #TablaProd2 td {
-      border: 1px solid #000;
-      padding: 8px;
-      text-align: left;
-    }
+th {
+    background-color: #73b0d0;
+    color: white;
+}
+
 
   .product-row {
     display: flex;
@@ -106,39 +84,14 @@ main {
     height: 300px;
   }
 
-  .event-row {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      height: 50px;
-  }
 
-
-  .prio-row {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-  }
-
-  .prio-row-dates{
-
-        display: flex;
-        flex-direction: row;
-
-  }
-
-  .prio-row-numbers{
-
-        display: flex;
-        flex-direction: row;
-
-  }
 
 
 
   .product-img {
     flex: 40%;
+    background: #fff; /* Fondo blanco para la imagen */
+    border: 1px solid #ddd;
   }
 
   .product-img img {
@@ -150,15 +103,23 @@ main {
     flex: 60%;
     display: flex;
     flex-direction: column;
+    padding: 8px;
   }
 
   .product-name {
     flex: 25%;
-
+    font-size: 25px; /* Tamaño más grande para el título */
+    text-decoration: underline; /* Título subrayado */
+    text-decoration-color: #9fbed2;
+    margin-bottom: 4px;
   }
 
   .product-desc {
     flex: 50%;
+    border: 1px solid #ffffff; /* Borde azul grisáceo */
+    padding: 4px;
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 4px; /* Espaciado debajo de la descripción */
 
   }
 
@@ -170,13 +131,17 @@ main {
 
   .product-category {
     flex: 50%;
-
+    text-align: left;
+    font-size: 13px; /* Tamaño más pequeño para la categoría */
+    color: #696969;
+    margin-top:25px;
   }
 
   .product-price {
     flex: 50%;
     text-align: right;
-
+    font-weight: bold;
+    margin-top:25px;
   }
 
   #pagination {
@@ -197,7 +162,7 @@ main {
   /* Estilo del fondo oscurecido */
   .modal {
       display: none; /* Oculto por defecto */
-      position: fixed; /* Fijo en la posición */
+      position: fixed; /* Fijo en la posiciÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
       z-index: 1; /* Situado sobre el resto del contenido */
       left: 0;
       top: 0;
@@ -217,20 +182,8 @@ main {
       width: 40%; /* Anchura del contenido */
   }
 
-  /* El botón de cierre (x) */
-  .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-  }
 
-  .close:hover,
-  .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-  }
+
 
   .main-container {
        display: flex;
@@ -247,13 +200,22 @@ main {
          flex-direction: column;
 
   }
-  .form-containers {
-       display: flex;
-       flex-direction: row;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        height: 300px;
-  }
+
+.controller-label{
+
+  text-align:center;
+  font-size:30px;
+  font-weight:bold;
+  margin: 10px;
+}
+.form-containers {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 320px;
+  margin-bottom: 10px;
+}
   .form-container {
       display: flex;
       flex-direction: column;
@@ -268,7 +230,7 @@ main {
          flex-direction: row;
           border: 1px solid #ccc;
           border-radius: 5px;
-          height: 400px;
+          height: 450px;
     }
 
   .form-container-prio{
@@ -286,7 +248,24 @@ main {
 
   .form-container-prio label, .form-container-prio input, .form-container-prio select, .form-container-prio button {
         margin: 10px 0;
-    }
+  }
+
+input[type='number'], input[type='text'], select {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+#username{
+  width: 205px;
+
+}
+
+#password{
+border-radius: 4px;
+  border: 1px solid #ccc;
+
+}
 
   button {
       background-color: #4CAF50;
@@ -297,6 +276,72 @@ main {
       cursor: pointer;
   }
 
+  #session-button {
+      background-color: #008CBA; /* Color azul para el botÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 30px;
+  }
+
+  #logout-button {
+      display: none;
+      background-color: #008CBA; /* Color azul para el botÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â³n */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 30px;
+  }
+
+  .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   button:hover {
       background-color: #45a049;
   }
+  #session-button:hover {
+      background-color: #709fc1;
+  }
+
+  #logout-button:hover {
+      background-color: #709fc1;
+  }
+
+  .delete-button:hover {
+      background-color: #e23c63;
+  }
+
+  .button-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #send-prio{
+
+    margin-top: 30px;
+    margin-bottom: 28px;
+  }
+
+#prio-mode{
+
+  margin-top: 20px;
+}
+
+.delete-button{
+  background-color: #f7002e;
+}

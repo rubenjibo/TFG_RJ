@@ -29,7 +29,7 @@
 
         <button id="search-button">Buscar</button>
         <button id="session-button">Admin</button>
-        <button id="logout-button">Tancar Sesio</button>
+        <button id="logout-button">Tancar Sessió</button>
     </div>
 </header>
 
@@ -40,7 +40,7 @@
 
                 <label for="username">Usuario:</label>
                 <input type="text" id="username" name="username"><br><br>
-                <label for="password">Contraseña:</label>
+                <label for="password">Contrasenya:</label>
                 <input type="password" id="password" name="password"><br><br>
                 <button id="login-button">Iniciar Sesio</button>
 
@@ -59,9 +59,7 @@
 
                 </tbody>
             </table>
-        </div>
 
-        <div id="table-container2">
             <table id="TablaProd2">
                 <thead>
                 <tr>
@@ -72,9 +70,12 @@
 
                 </tbody>
             </table>
-        </div>
-        <div class="admin-containers">
 
+        </div>
+
+
+        <div class="admin-containers">
+            <label class="controller-label">Controlador Events</label>
             <div class="form-containers">
                 <div class="form-container">
 
@@ -98,7 +99,7 @@
                         <option value="12">Diciembre</option>
                     </select>
 
-                    <label for="year_ini">Añy inici</label>
+                    <label for="year_ini">Any inici</label>
                     <input type="number" id="year_ini" name="year_ini">
 
 
@@ -134,7 +135,7 @@
                         <option value="12">Diciembre</option>
                     </select>
 
-                    <label for="year_fi">Añy fi</label>
+                    <label for="year_fi">Any fi</label>
                     <input type="number" id="year_fi" name="year_fi">
 
 
@@ -148,7 +149,10 @@
                 <table id="TablaEvent">
                     <thead>
                     <tr>
-                        <th>Events</th>
+                        <th>Data d'Inici</th>
+                        <th>Data Fi</th>
+                        <th>Categoria</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -156,7 +160,7 @@
                     </tbody>
                 </table>
             </div>
-
+            <label class="controller-label">Controlador Prios</label>
             <div class="form-containers-prio">
                 <div class="form-container-prio">
 
@@ -180,7 +184,7 @@
                         <option value="12">Diciembre</option>
                     </select>
 
-                    <label for="year_ini_prio">Añy inici</label>
+                    <label for="year_ini_prio">Any inici</label>
                     <input type="number" id="year_ini_prio" name="year_ini_prio">
 
                     <label id="label_prod_prio" for="prod_prio">Selecciona el producte</label>
@@ -214,7 +218,7 @@
                         <option value="12">Diciembre</option>
                     </select>
 
-                    <label for="year_fi_prio">Añy fi</label>
+                    <label for="year_fi_prio">Any fi</label>
                     <input type="number" id="year_fi_prio" name="year_fi_prio">
 
                     <label id="label_position_prio" for="position_prio">Selecciona posicio</label>
@@ -232,7 +236,11 @@
                 <table id="TablaPrio">
                     <thead>
                     <tr>
-                        <th>Prioritats</th>
+                        <th>Data d'Inici</th>
+                        <th>Data Fi</th>
+                        <th>ID</th>
+                        <th>Index</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

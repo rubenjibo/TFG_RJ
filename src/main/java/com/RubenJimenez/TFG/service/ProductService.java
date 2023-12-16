@@ -32,6 +32,7 @@ public class ProductService {
 
     public Iterable<Product> filterProducts(String searchText, String[] categories){
         if (categories.length == 0){
+
             return productRepo.findByNameContainingOrDescContaining(searchText, searchText);
 
         } else if (searchText.isBlank()) {
@@ -39,11 +40,11 @@ public class ProductService {
                     .map(category -> "\"" + category + "\"")
                     .collect(Collectors.joining(", "));
 
-            System.out.println(formattedCategories);
+
 
             return productRepo.findCategories(categories);
         }else{
-            System.out.println(Arrays.toString(categories));
+
 
             return productRepo.findByTextAndCategories(searchText, searchText, categories);
 

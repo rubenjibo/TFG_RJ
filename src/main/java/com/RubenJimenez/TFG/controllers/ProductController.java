@@ -76,7 +76,7 @@ public class ProductController {
 
     @GetMapping("/filterProducts")
     public Iterable<Product> filterProducts(@RequestParam String searchText, String[] categories){
-        return eventService.sortProductsOnEvents(productService.filterProducts(searchText,categories));
+        return productService.filterProducts(searchText,categories);
     }
 
     @PostMapping("/insert")
